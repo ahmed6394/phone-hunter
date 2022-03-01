@@ -16,6 +16,10 @@ const searchMobile = () => {
 
 const displaySearchResult = data => {
   const searchResult = document.getElementById("search-result");
+
+  const mobileDetails = document.getElementById("mobile-details");
+  // Clear data
+  mobileDetails.textContent = "";
   searchResult.textContent = "";
   if (data.length == 0) {
     // no result found
@@ -51,18 +55,24 @@ const displayMobileDetail = mobile => {
   console.log(mobile);
 
   const mobileDetails = document.getElementById("mobile-details");
+  mobileDetails.textContent = "";
   const div = document.createElement("div");
   div.classList.add("card");
   div.innerHTML = `
         <img src="${mobile.image}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">${mobile.name}</h5>
+          <p class="card-text">Release Date: ${mobile.releaseDate}
           </p>
-          <p class="card-text">
+          <p class="card-text">Main Features:
+          <p class="fw-light">Storage: ${mobile.mainFeatures.storage}</p>
+          <p class="fw-light">Display Size: ${mobile.mainFeatures.displaySize}</p>
+          <p class="fw-light">ChipSet: ${mobile.mainFeatures.chipSet}</p>
+          <p class="fw-light">Memory: ${mobile.mainFeatures.memory}</p>
           </p>
-          <p class="card-text">
+          <p class="card-text">Sensors: ${mobile.mainFeatures.sensors}
           </p>
-          <p class="card-text">
+          <p class="card-text">Others: ${mobile.others}
           </p>
           
         </div>
